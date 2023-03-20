@@ -12,9 +12,16 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        TextBox[] textBoxes;
         public Form1()
         {
             InitializeComponent();
+            textBoxes = new TextBox[5];
+            textBoxes[0] = textBox1;
+            textBoxes[1] = textBox2;
+            textBoxes[2] = textBox3;
+            textBoxes[3] = textBox4;
+            textBoxes[4] = textBox5;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -25,26 +32,16 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             richTextBox1.ResetText();
-            if (string.IsNullOrEmpty(textBox1.Text))
-                richTextBox1.AppendText("Element1: Porozhno\n");
-            else
-                richTextBox1.AppendText("Element1: " + textBox1.Text + '\n');
-            if (string.IsNullOrEmpty(textBox2.Text))
-                richTextBox1.AppendText("Element2: Porozhno\n");
-            else
-                richTextBox1.AppendText("Element2: " + textBox2.Text + '\n');
-            if (string.IsNullOrEmpty(textBox3.Text))
-                richTextBox1.AppendText("Element3: Porozhno\n");
-            else
-                richTextBox1.AppendText("Element3: " + textBox3.Text + '\n');
-            if (string.IsNullOrEmpty(textBox4.Text))
-                richTextBox1.AppendText("Element4: Porozhno\n");
-            else
-                richTextBox1.AppendText("Element4: " + textBox4.Text + '\n');
-            if (string.IsNullOrEmpty(textBox5.Text))
-                richTextBox1.AppendText("Element5: Porozhno\n");
-            else
-                richTextBox1.AppendText("Element5: " + textBox5.Text + '\n');
+            for (int idx = 0; idx < textBoxes.Length; idx++)
+            {
+                int num = idx + 1;
+                if (string.IsNullOrEmpty(textBoxes[idx].Text))
+                    richTextBox1.AppendText("Element" + num + ":Porozhno\n");
+                else
+                    richTextBox1.AppendText("Element" + num + ": " + textBoxes[idx].Text + '\n');
+            }
+
+
         }
     }
 }
